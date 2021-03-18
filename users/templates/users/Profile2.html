@@ -1,8 +1,5 @@
-{% extends "archive/base.html" %}
-{% load crispy_forms_tags %}
-{%block content%}
-    <h1>{{ user.username }}</h1>
 {% load static from staticfiles %}
+{% load crispy_forms_tags %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,89 +9,73 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="{% static 'archive/styles.css' %}">
-
+	<link href="{% static 'css/styles.css'%}" rel="stylesheet" >
+	
 
 <!-- glyphicons cdn link -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <title>Profile</title>
   </head>
   <body>
+    
 
-<br><br><br>
-
-
+    	
 	<div id="header" class="container-fluid px-0">
-
+		
 		<div class="row">
 			<div class="col-sm content-sm-left">
-				<img src="{% static 'images/logo.jpg' %}" class="logo" alt="Galleria">
+				<a href="/"><img src="{% static 'images/logo.jpg' %}" class="logo" alt="Galleria"></a>
 			</div>
-			
+			<div class="col-sm content-sm-center">
+				<input type="text" placeholder="Search posts, groups, members, and etc" name="search">
+				<button type="submit"><i class="fa fa-search"></i></button>
+			</div>
 			<div class="col-sm content-sm-right ">
 				<div class="icons">
 					<i class="fa fa-home topicon"></i>
 					<i class="fa fa-bell topicon"></i>
 					<i class="fa fa-comment topicon"></i>
-					<img src="{% static 'images/emly2.jpeg' %}" class="content-right profile-pic" alt="Galleria">
+					<a href="/"><img src="{% static 'images/emly2.jpeg' %}" class="content-right profile-pic" alt="Galleria"></a>
 					<i class="fa fa-sort-down topicon"></i>
 				</div>
 			</div>
-
+			
 		</div>
-
+		
 	</div>
 	<div id="cover" class="container-fluid px-0">
-
+		
 		<div class="row">
 			<div class="col-sm-12 content-sm-center">
 			<div class="profilecover">
 			<h3>d</h3>
 			</div>
 			</div>
-
+			
 		</div>
-
+		
 	</div>
 	<div id="main" class="container">
-
-<style>
-    .profile-pic{
-        width: 200px;
-        height: 200px;
-        border-radius: 100%;
-    }
-</style>
+		
 		<div class="row">
 			<div class="col-sm-12 text-center profilebox">
-						<!-- <img src ="{% static 'images/emly-big.jpg' %}"  class=" profile-pic" alt="Galleria"> -->
-                        
-                        <img src ="{{ user.profile.image.url }}"  class="profile-pic"  width="200px" height="200px" alt="Galleria">
-                        
-						<h3 class="profile-title">{{user.first_name}} {{user.last_name}}</h3>
-                        <!-- <h3  class="profile-title">Adeyemo</h3> -->
-					<h4 class="profile-designation">{{ user.profile.profession }}</h4>
-
-                    <p>{{user.email}}</p>
-					<p>IG: @{{ user.profile.instagram }} Twitter: @{{ user.profile.twitter }} </p>
+						<img src="{{ user.profile.image.url }}"  class=" profile-pic" alt="Galleria">
+						<h3 class="profile-title">{{user.first_name}} {{ user.last_name }}</h3>
+					<h4 class="profile-designation">{{user.profile.profession}}</h4>
+			
+					
+					<p>IG: @{{user.profile.instagram}} Twitter: @{{user.profile.twitter}} </p>
 					<button type="button" class="btn btn-primary btn-lg message-btn">Message</button>
-
-<!-- ============================ Edit Profile Area ======================== -->
-
-
-<a href="{% url 'edit-profile' %}" class="btn btn-warning btn-lg" >Edit Profile</a>
-
-
-<!-- ========================= End of Edit Profile Area ======================== -->
-
-
+                    <a href="{% url 'edit-profile' %}" class="btn btn-warning btn-lg" >Edit Profile</a>
+					
+					
 
 				</div>
-
+				
 			<div class="col-sm-12">
-
+			
 				<div class="homebox">
-
+					
                         <nav>
 							<div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
 								<button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Biography	</button>
@@ -105,11 +86,11 @@
 					<div class="tab-content" id="nav-tabContent">
 						<div style="padding:20px;"class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 						<h3 class="profile-title">Biography</h3><br/>
-							<p>{{ user.profile.biography }}</p>
+							<p>{{user.profile.biography}}</p>
 							<h3 class="profile-title">Featured</h3><br/>
-
-
-
+							
+							
+                
 							<div class="blog">
 								<div class="col-md-12">
 									<div id="blogCarousel" class="carousel slide" data-ride="carousel">
@@ -121,37 +102,59 @@
 
 											<!-- Carousel items -->
 												<div class="carousel-inner">
-                                                    
-                                                    
-                                                    
-                                                    
-													<div class="carousel-item active">
-                                                    
-                                                    <div class="carousel-item active">
-                                                    
-														<div class="row">
-                                                    
-                                                               
-                                                                
-                                                             {% for f_image in f_images %}
-                                        
-                                    
-                                                                <div class="col-md-3">
-                                                                    <a href="#">
-                                                                        <img src="{{ f_image.image.url }}" alt="Image" style="max-width:100%;">
-                                                                    </a>
 
-                                                                </div>
-                                                            {% endfor %}    
-							
+													<div class="carousel-item active">
+														<div class="row">
+															<div class="col-md-3">
+																<a href="#">
+																	<img src="{% static 'images/1.jpg' %} " alt="Image" style="max-width:100%;">
+																</a>
+															</div>
+															<div class="col-md-3">
+																<a href="#">
+																	<img src="{% static 'images/2.jpg' %}" alt="Image" style="max-width:100%;">
+																</a>
+															</div>
+															<div class="col-md-3">
+																<a href="#">
+																	<img src="{% static 'images/3.jpg' %}" alt="Image" style="max-width:100%;">
+																</a>
+															</div>
+                                    <div class="col-md-3">
+                                        <a href="#">
+                                            <img src="{% static 'images/4.jpg' %}" alt="Image" style="max-width:100%;">
+                                        </a>
+                                    </div>
                                 </div>
                                 <!--.row-->
                             </div>
                             <!--.item-->
-                            
-                            
-                            
-                          
+
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <a href="#">
+                                            <img src="{% static 'images/5.jpg' %}" alt="Image" style="max-width:100%;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="#">
+                                            <img src="{% static 'images/6.jpg' %}" alt="Image" style="max-width:100%;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="#">
+                                            <img src="{% static 'images/7.jpg' %}" alt="Image" style="max-width:100%;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="#">
+                                            <img src="{% static 'images/8.jpg' %}" alt="Image" style="max-width:100%;">
+                                        </a>
+                                    </div>
+                                </div>
+                                <!--.row-->
+                            </div>
                             <!--.item-->
 
                         </div>
@@ -167,11 +170,9 @@
   Upload Files
 </button></h3><br/>
 <p>3/21</p>
-
-
-
-
-
+							
+							
+                
             <div class="blog">
                 <div class="col-md">
                     <div id="blogCarousel" class="carousel slide" data-ride="carousel">
@@ -182,53 +183,62 @@
                         </ol>
 
                         <!-- Carousel items -->
-                       <!--  <div class="carousel-inner">
+                        <div class="carousel-inner">
 
                             <div class="carousel-item active">
                                 <div class="row">
-
-                                    {% for image in images %}
-                                        
-                                        
-                                    
+                                     {% for agent in images %}
                                     <div class="col-md-3">
                                         <a href="#">
-                                            <img src="{{ image.image.url }}" alt="Image" style="max-width:100%;">
+                                            <img src="{{agent.image.url}}" alt="Image" style="max-width:100%;">
                                         </a>
-
                                     </div>
                                     {% endfor %}
                                     
                                 </div>
-                                
+                                <!--.row-->
                             </div>
+                            <!--.item-->
 
-                           
-                            
-
-                        </div> -->
-                        <!--.carousel-inner-->
-
-                         <div class="carousel-inner" role="listbox">
-                            {% for agent in images %}
-                            <!-- item -->
-                                <div class="carousel-item text-center text-light mb-5 {% if forloop.first %} active{% endif %}">
-                                    <img src="{{ agent.image.url }}" class="img-fluid rounded-circle mb-3" width="150">
-                                    
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <a href="#">
+                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="#">
+                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="#">
+                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="#">
+                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
+                                        </a>
+                                    </div>
                                 </div>
-                            <!-- end item -->
-                            {% endfor %}
+                                <!--.row-->
+                            </div>
+                            <!--.item-->
+
                         </div>
+                        <!--.carousel-inner-->
                     </div>
                     <!--.Carousel-->
 
                 </div>
-
+            
 			<br/><br/>
 <p>2/21</p>
-
-
-
+							
+							
+                
             <div class="blog">
                 <div class="col-md">
                     <div id="blogCarousel" class="carousel slide" data-ride="carousel">
@@ -303,16 +313,16 @@
             </div>
 </div>
 <script>
-
+	
 </script>
 
-
-
-
+          
+          
+       
 					</div>
-
+					
 					<div class="tab-pane fade " id="nav-activity" role="tabpanel" aria-labelledby="nav-activity-tab">
-
+						
 <h3 class="profile-title">Followers</h3><br/>
 Followers will go here.
 					</div>
@@ -321,8 +331,8 @@ Followers will go here.
 Collections will go here.
 					</div>
 				</div>
-
-
+                
+                
 				</div>
 			</div><!--
 			<div class="col-sm-3">
@@ -339,18 +349,17 @@ Collections will go here.
 						<li><i class="fab fa-facebook-square"></i> <a href="#">Emlysmith</a></li>
 						<li><i class="fab fa-twitter-square"></i> <a href="#">Emlysmith</a></li>
 						<li><i class="fab fa-instagram-square"></i> <a href="#">Emlysmith</a></li>
-
+						
 					</ul>
 					</div>
-
+				
 			</div>
 			-->
-
-
-
+			
+			
+		
 	</div>
 	</div>
-
 
 <!-- ======== Edit profile Modal ================ -->
 
@@ -388,11 +397,12 @@ Collections will go here.
 
 <!-- ======== End Edit profile Modal ================ -->
 
+	
 <div id="footer" class="container-fluid px-0">
-
-
+		
+		
 			Copyright 2021
-
+		
 </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -408,5 +418,3 @@ Collections will go here.
 
   </body>
 </html>
-
-{%endblock content%}

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import userFile#, comment
-from .models import Profile
+from .models import Profile,Images
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField() #default is true
@@ -32,3 +32,11 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['profession','twitter','instagram','image','biography']
+
+
+
+
+class Uplaod_images(forms.ModelForm):
+    class Meta:
+        model = Images
+        fields = ['image'] 

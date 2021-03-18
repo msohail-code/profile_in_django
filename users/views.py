@@ -6,12 +6,13 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.core.files.storage import FileSystemStorage
-from .forms import fileForm, UserUpdateForm, ProfileUpdateForm
-from .models import userFile
+from .forms import fileForm, UserUpdateForm, ProfileUpdateForm,Uplaod_images
+from .models import userFile, Images
 from django.views.generic import ListView
 from django.contrib.auth.models import User
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 # Create your views here.
 
 def register(request):
@@ -28,26 +29,32 @@ def register(request):
 
 @login_required()
 def profile(request):
+    
+
     if request.method == 'POST':
-        u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST,
-                                   request.FILES,
-                                   instance=request.user.profile)
-        if u_form.is_valid() and p_form.is_valid():
-            u_form.save()
-            p_form.save()
-            messages.success(request, f'Your account has been updated!')
+        f_form = Uplaod_images(request.POST,request.FILES)
+
+        if f_form.is_valid():
+            # f_form.save()
+            stock = f_form.save(commit=False)
+            stock.user = request.user
+            stock.save()
+
+            messages.success(request, f'Your images are uploaded!')
             return redirect('profile')
 
     else:
-        u_form = UserUpdateForm(instance=request.user)
-        p_form = ProfileUpdateForm(instance=request.user.profile)
+        f_form = Uplaod_images(request.POST,request.FILES)
+
+    data = Images.objects.filter(user_id=request.user).order_by('-id')
+    f_data = Images.objects.filter(user_id=request.user,featured=1).order_by('-id')
 
     context = {
-        'u_form': u_form,
-        'p_form': p_form
+        'f_form': f_form, 
+        'images': data,
+        'f_images': f_data
     }
-    return render(request,'users/profile.html', context)
+    return render(request,'users/Profile.html',context)
 
 class fileDetail(DetailView):
     model = userFile

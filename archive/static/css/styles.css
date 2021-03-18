@@ -1,0 +1,116 @@
+/* Custom CSS */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+/* apply a natural box layout model to all elements, but allowing components to change */
+
+.activity-feed {
+  padding: 15px;
+}
+.activity-feed .feed-item {
+  position: relative;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  border-left: 2px solid #e4e8eb;
+}
+.activity-feed .feed-item:last-child {
+  border-color: transparent;
+}
+.activity-feed .feed-item:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid #f37167;
+}
+.activity-feed .feed-item .date {
+  position: relative;
+  top: -5px;
+  color: #8c96a3;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.activity-feed .feed-item .text {
+  position: relative;
+  top: -3px;
+}
+/* post on wall */
+
+
+
+.primary-color {color:#450093;}
+.secondary-color {color:#202020;}
+.no-padding {
+ /*  padding-left: 0;
+ padding-right: 0;*/
+}
+.logo{margin-left:10px;padding:10px;}
+body{background-color:#485563;}
+#header{border-bottom:1px solid #f8f8f8; background-color:#fff !important;   box-shadow: 0px 0px 5px #888888;}
+#header button {
+  /*float: right;*/
+  padding: 1px 10px;
+  margin-top: 8px;
+  margin-left: -40px;
+  background: transparent;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+#header button:hover {
+  background: #ccc;
+}
+#header input[type=text] {
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #c1c1c1;
+  background-color:#e6e6e6;
+  width: 80%;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+.topicon{color:#7d8297; padding:10px;}
+.profile-pic{border-radius:150px;margin-top:-300px; border:3px solid #fff;}
+.icons{margin-top:10px;margin-right:20px; float:right;}
+.profilecover{background: url('../img/emlybg.jpg'); padding-top:150px;padding-bottom:150px;    BACKGROUND-POSITION: CENTER;}
+.profilebox{margin-top:10px; border-radius:10px; background-color:#fff;padding-bottom:20px;}
+.profile-title{font-size:24px; color:#450093;}
+.profile-designation{font-size:18px; color:#555555; margin-top:-5px; font-weight:400;margin-bottom:20px;}
+p{color:#555555;}
+.message-btn{padding-left:70px; padding-right:70px;background-color:#450093 !important; border:none;}
+.custom-ul{text-align:left !important; padding-left:20px;}
+.custom-ul i{padding-right:20px;font-size:22px;margin-top:10px;}
+.skills{padding:20px;width:300px;margin-top:20px;}
+.skills h3{color:#450093;margin-bottom:20px;}
+.skills-btn{padding-left:40px; padding-right:40px;background-color:transparent !important; border:1px solid #c1c1c1; margin-bottom:10px;color:#202020; font-size:13px;border-radius:30px;}
+.skills-btn:hover{color:#303030;}
+.homebox{width:100%; border-radius:10px; background-color:#fff;margin-top:20px;padding:20px;}
+.homebox2{width:100%; border-radius:10px 10px 0px 0px; background-color:#450093;margin-top:20px;padding:20px 0px 10px 20px; }
+.boxtitle{color:#fff; }
+.postbox{width:100%; background-color:#fff;margin-top:0px;padding:20px;}
+#footer{background-color:#fff;margin-top:20px;padding: 20px; text-align:center;}
+.blog .carousel-indicators {
+	left: 0;
+	top: auto;
+    bottom: -40px;
+
+}
+
+/* The colour of the indicators */
+.blog .carousel-indicators li {
+    background: #a3a3a3;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+}
+
+.blog .carousel-indicators .active {
+background: #707070;
+}
+.blog .carousel-indicators li{margin:2px;}

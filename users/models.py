@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.views.generic import ListView
 # Create your models here.
 class userFile(models.Model):
+    # user = models.OneToOneField(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=150, blank=False)
     uploader = models.ForeignKey(User, on_delete=models.CASCADE, editable=False)
     uploadDate = models.DateTimeField(default=timezone.now())
@@ -74,3 +75,12 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'; 
+
+class Images(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    image = models.ImageField(default='',upload_to='users/files')
+    featured = models.IntegerField(default=0)
+    
+
+    def __str__(self):
+        return f'{self.user.username} Images'; 
