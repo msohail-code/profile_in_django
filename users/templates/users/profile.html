@@ -60,11 +60,18 @@
 	</div>
 	<div id="main" class="container">
 
+<style>
+    .profile-pic{
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+    }
+</style>
 		<div class="row">
 			<div class="col-sm-12 text-center profilebox">
 						<!-- <img src ="{% static 'images/emly-big.jpg' %}"  class=" profile-pic" alt="Galleria"> -->
                         
-                        <img src ="{{ user.profile.image.url }}"  class=" profile-pic" width="200px" height="200px" alt="Galleria">
+                        <img src ="{{ user.profile.image.url }}"  class="profile-pic"  width="200px" height="200px" alt="Galleria">
                         
 						<h3 class="profile-title">{{user.first_name}} {{user.last_name}}</h3>
                         <!-- <h3  class="profile-title">Adeyemo</h3> -->
@@ -79,38 +86,6 @@
 
 <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target=".bd-example-modal-lg">Edit Profile</button>
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!--Edit profile form here-->
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-5">
-                    <h1>Sign Up Today</h1>
-                </legend>
-                {{ form|crispy  }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outine-info" type="submit">Sign Up</button>
-            </div>
-        </form>
-        <!--End of Edit profile form-->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Update Profile</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ========================= End of Edit Profile Area ======================== -->
 
@@ -416,6 +391,44 @@ Collections will go here.
 
 	</div>
 	</div>
+
+
+<!-- ======== Edit profile Modal ================ -->
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <form method="POST" enctype="multipart/form-data">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!--Edit profile form here-->
+        
+            {% csrf_token %}
+            <fieldset class="form-group">
+                
+                {{ u_form|crispy  }}
+                {{ p_form|crispy  }}
+            </fieldset>
+            
+        
+        <!--End of Edit profile form-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" >Update Profile</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- ======== End Edit profile Modal ================ -->
 
 <div id="footer" class="container-fluid px-0">
 
