@@ -27,6 +27,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('profile/', user_views.profile, name='profile'),
+    path('edit-profile/', user_views.edit_profile, name='edit-profile'),
     path('file/<int:pk>/', fileDetail.as_view(),name='file-detail'),
     path('file/<int:pk>/update', updateFile.as_view(), name='update'),
     path('file/<int:pk>/delete', deleteFile.as_view(), name='delete'),

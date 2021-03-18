@@ -75,16 +75,16 @@
                         
 						<h3 class="profile-title">{{user.first_name}} {{user.last_name}}</h3>
                         <!-- <h3  class="profile-title">Adeyemo</h3> -->
-					<h4 class="profile-designation">Engineer, Nigerian, UNT</h4>
+					<h4 class="profile-designation">{{ user.profile.profession }}</h4>
 
                     <p>{{user.email}}</p>
-					<p>IG: @OgaMike__ Twitter: @OgaMike__ </p>
+					<p>IG: @{{ user.profile.instagram }} Twitter: @{{ user.profile.twitter }} </p>
 					<button type="button" class="btn btn-primary btn-lg message-btn">Message</button>
 
 <!-- ============================ Edit Profile Area ======================== -->
 
 
-<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target=".bd-example-modal-lg">Edit Profile</button>
+<a href="{% url 'edit-profile' %}" class="btn btn-warning btn-lg" >Edit Profile</a>
 
 
 <!-- ========================= End of Edit Profile Area ======================== -->
@@ -107,7 +107,7 @@
 					<div class="tab-content" id="nav-tabContent">
 						<div style="padding:20px;"class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 						<h3 class="profile-title">Biography</h3><br/>
-							<p>Placeholder content for the tab panel. As you scroll down you will see the amazing pictures in my gallery.</p>
+							<p>{{ user.profile.biography }}</p>
 							<h3 class="profile-title">Featured</h3><br/>
 
 

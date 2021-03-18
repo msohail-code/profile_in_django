@@ -66,6 +66,10 @@ class userFile(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='users/default.jpg',upload_to='users')
+    instagram = models.CharField(max_length=255,default='')
+    twitter = models.CharField(max_length=255,default='')
+    profession = models.CharField(max_length=255,default='')
+    biography = models.TextField()
     
 
     def __str__(self):
