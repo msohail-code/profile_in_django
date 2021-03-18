@@ -20,8 +20,11 @@
     <title>Profile</title>
   </head>
   <body>
-
-<br><br><br>
+<style>
+    main.container {
+    margin-top: 100px;
+}
+</style>
 
 
 	<div id="header" class="container-fluid px-0">
@@ -209,98 +212,28 @@
                         </div> -->
                         <!--.carousel-inner-->
 
-                         <div class="carousel-inner" role="listbox">
-                            {% for agent in images %}
-                            <!-- item -->
-                                <div class="carousel-item text-center text-light mb-5 {% if forloop.first %} active{% endif %}">
-                                    <img src="{{ agent.image.url }}" class="img-fluid rounded-circle mb-3" width="150">
+                          <div class="carousel-inner">
+
+                            <div class="carousel-item active">
+                                <div class="row">
+                                     {% for agent in images %}
+                                    <div class="col-md-3">
+                                        <a href="#">
+                                            <img src="{{agent.image.url}}" alt="Image" style="max-width:100%;">
+                                        </a>
+                                    </div>
+                                    {% endfor %}
                                     
                                 </div>
-                            <!-- end item -->
-                            {% endfor %}
-                        </div>
+                                <!--.row-->
+                            </div>
                     </div>
                     <!--.Carousel-->
 
                 </div>
 
 			<br/><br/>
-<p>2/21</p>
 
-
-
-            <div class="blog">
-                <div class="col-md">
-                    <div id="blogCarousel" class="carousel slide" data-ride="carousel">
-
-                        <ol class="carousel-indicators">
-                            <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#blogCarousel" data-slide-to="1"></li>
-                        </ol>
-
-                        <!-- Carousel items -->
-                        <div class="carousel-inner">
-
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{% static 'images/4.jpg' %}" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{% static 'images/2.jpg' %}" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{% static 'images/1.jpg' %}" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{% static 'images/5.jpg' %}" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                <!--.row-->
-                            </div>
-                            <!--.item-->
-
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--.row-->
-                            </div>
-                            <!--.item-->
-
-                        </div>
-                        <!--.carousel-inner-->
-                    </div>
-                    <!--.Carousel-->
-
-                </div>
-            </div>
 </div>
 <script>
 
