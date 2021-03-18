@@ -1,0 +1,166 @@
+{% extends "archive/base.html" %}
+{%block content%}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Times New Roman, sans-serif;
+  margin: 1;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 2px;
+}
+
+.about-section {
+  padding: 100px;
+  text-align: center;
+  background-color: #285250;
+  color: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  margin: 0px;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #555;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #5aa19d;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="about-section">
+  <font face = "Brush Script MT" size = "25">About Us</font><br />
+  <p> </p>
+  <font face = "Brush Script MT" size = "5">What is Galleria?</font><br />
+</div>
+
+<h2 style="text-align:center">Our Team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="/static/images/andrewA.JPG" alt="Andrew" style="width:100%">
+      <div class="container">
+        <h3>Andrew Araujo</h3>
+        <p class="title">Developer & Project Manager</p>
+        <p>andrewaraujo@my.unt.edu</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/static/images/cruisepic.JPG" alt="Carlyn" style="width:100%">
+      <div class="container">
+        <h2>Carlyn Thomsen</h2>
+        <p class="title">Page Content Manager & Backend Developer</p>
+        <p>carlynthomsen@my.unt.edu</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team3.jpg" alt="Oliver" style="width:100%">
+      <div class="container">
+        <h2>Oliver</h2>
+          <h2>Velez</h2>
+        <p class="title">Creator & Designer</p>
+        <p>olivervelez@my.unt.edu</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+      <div class="column">
+    <div class="card">
+      <img src="/static/images/Micheal.JPG" alt="Micheal" style="width:100%">
+      <div class="container">
+        <h2>Micheal Adeyemo</h2>
+        <p class="title">Designer & Developer</p>
+        <p>michealadeyemo@my.unt.edu</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+    <div class="column">
+    <div class="card">
+      <img src="/w3images/team2.jpg" alt="Elizabeth" style="width:100%">
+      <div class="container">
+        <h2>Elizabeth Adeeko</h2>
+        <p class="title">Backend Developer</p>
+        <p>elizabethadeeko@my.unt.edu</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+    <div class="column">
+    <div class="card">
+      <img src="/w3images/team2.jpg" alt="Patrick" style="width:100%">
+      <div class="container">
+        <h2>Patrick Walterscheid</h2>
+        <p class="title">Designer</p>
+        <p>patrickwalterscheid@my.unt.edu</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
+
+
+{%endblock content%}

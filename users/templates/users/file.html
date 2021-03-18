@@ -1,0 +1,29 @@
+{% extends "archive/base.html" %}
+{% block content %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          {% if object.permissionToSeeUser == 'Yes'%}
+          <a class="mr-2" href="#">{{ object.uploader }}</a>
+          {%else%}
+          <a class="mr-2">anonymous</a>
+          {% endif %}
+          <small class="text-muted">{{ object.uploadDate }} &nbsp;&nbsp; Type:{{object.FileType}}</small>
+        </div>
+          {% if post.FileType == 'Text'%}
+        <h2><p class="article-title">{{ object.title }}</p> <img src="/static/archive/file.jpeg"></h2>
+          {%elif post.FileType == 'Image'%}
+        <h2><p class="article-title">{{ object.title }}</p> <img src="/static/archive/picture.jpeg"></h2>
+          {%elif post.FileType == 'Video'%}
+        <h2><p class="article-title">{{ object.title }}</p> <img src="/static/archive/video.jpeg"></h2>
+          {%elif post.FileType == 'Audio'%}
+        <h2><p class="article-title">{{ object.title }}</p> <img src="/static/archive/audio.jpeg"></h2>
+          {%else%}
+        <h2><p class="article-title">{{ object.title }}</p> <img src="/static/archive/random.jpeg"></h2>
+          {%endif%}
+        <a href="{{file.realFile.url}}" class="btn btn-primary btn-sm" target="_blank">Open file</a>
+        <a href="#" class="btn btn-primary btn-sm" target="_blank">Comment</a>
+        <a href="#" class="btn btn-danger btn-sm" target="_blank">Flag</a>
+      </div>
+    </article>
+{% endblock content %}

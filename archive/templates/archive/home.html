@@ -1,0 +1,46 @@
+{% extends "archive/base.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              {% if post.permissionToSeeUser == 'Yes'%}
+              <a class="mr-2" href="#">{{ post.uploader }}</a>
+              {%else%}
+              <a class="mr-2">anonymous</a>
+              {% endif %}
+              <small class="text-muted">{{ post.uploadDate }} &nbsp;&nbsp; Type:{{post.FileType}}</small>
+            </div>
+              {% if post.FileType == 'Text'%}
+            <h2><p class="article-title">{{ post.title }}</p> <img src="static/archive/file.jpeg"></h2>
+              {%elif post.FileType == 'Image'%}
+            <h2><p class="article-title">{{ post.title }}</p> <img src="static/archive/picture.jpeg"></h2>
+              {%elif post.FileType == 'Video'%}
+            <h2><p class="article-title">{{ post.title }}</p> <img src="static/archive/video.jpeg"></h2>
+              {%elif post.FileType == 'Audio'%}
+            <h2><p class="article-title">{{ post.title }}</p> <img src="static/archive/audio.jpeg"></h2>
+              {%else%}
+            <h2><p class="article-title">{{ post.title }}</p> <img src="static/archive/random.jpeg"></h2>
+              {%endif%}
+            <a class="article-content" href="{{post.realFile.url}}">View</a>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
+    <!--{% block items %}
+        {% if files %}
+
+            {% for file in files %}
+                <article class="media content-section">
+                  <div class="media-body">
+                    <div class="article-metadata">
+                      <a class="mr-2" href="#">{{ file.uploader }}</a>
+                      <small class="text-muted">{{ file.uploadDate }}</small>
+                    </div>
+                    <h2><a class="article-title" href="#">{{ file.title }}</a></h2>
+                    <a href="{{file.realFile.url}}" class="article-content">view</a>
+                  </div>
+                </article>
+            {% endfor %}
+        {%endif%}
+    {% endblock items %}-->

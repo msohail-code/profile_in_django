@@ -1,0 +1,10 @@
+{% extends "archive/base.html" %}
+{%block content%}
+    <h1>Logged out</h1>
+    <div class="border-top pt-5">
+        <small class="text-muted">
+            <a href="{% url 'login' %}">Sign In</a>
+        </small>
+    </div>
+
+{%endblock content%}

@@ -1,0 +1,24 @@
+{% extends "archive/base.html" %}
+{% block content %}
+    <h2>All Files <a href="{%url 'upload'%}" class="btn btn-primary btn-sm" >Upload Files </a></h2>
+        <body>
+            <div class="col-md-8">
+                {% if files %}
+                    {% for file in files%}
+                        <div class="alert alert-{{ message.tags }}">
+                            <p>{{file.title}} {{file.FileType}}</p>
+                            <p>Last Change:{{file.uploadDate|date:"d M Y"}}</p>
+                            <a href="{{file.realFile.url}}" class="btn btn-primary btn-sm" target="_blank">View</a>
+                            <form method="POST" action="{%url 'delete' file.pk%}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                            <a href="{% url 'update' file.pk%}" class="btn btn-primary btn-sm" target="_blank">Update</a>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% block matter %}{% endblock %}
+            </div>
+        </body>
+{% endblock %}
+
