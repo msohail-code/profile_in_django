@@ -54,7 +54,7 @@ def profile(request):
         'images': data,
         'f_images': f_data
     }
-    return render(request,'users/Profile.html',context)
+    return render(request,'users/Profile2.html',context)
 
 class fileDetail(DetailView):
     model = userFile

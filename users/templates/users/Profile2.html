@@ -14,6 +14,7 @@
 
 <!-- glyphicons cdn link -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <title>Profile</title>
   </head>
   <body>
@@ -26,9 +27,25 @@
 			<div class="col-sm content-sm-left">
 				<a href="/"><img src="{% static 'images/logo.jpg' %}" class="logo" alt="Galleria"></a>
 			</div>
-			<div class="col-sm content-sm-center">
-				<input type="text" placeholder="Search posts, groups, members, and etc" name="search">
-				<button type="submit"><i class="fa fa-search"></i></button>
+            <style>
+                #ourNavBar ul li{
+                    display: inline-block;
+                }
+            </style>
+			<div class="col-sm content-sm-center" id="ourNavBar">
+				<div class="navbar-nav">
+                    <ul>
+              {% if user.is_authenticated %}
+              <li><a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a></li>
+              <li><a class="nav-item nav-link" href="{% url 'upload' %}">Upload</a></li>
+              <li><a class="nav-item nav-link" href="{% url 'files' %}">Files</a></li>
+             <li> <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a></li>
+
+              {% else %}
+              <li><a class="nav-item nav-link" href="{% url 'login' %}">Login</a></li>
+              <li><a class="nav-item nav-link" href="{% url 'user-register' %}">Register</a></li>
+              {% endif %}
+              </ul>            </div>
 			</div>
 			<div class="col-sm content-sm-right ">
 				<div class="icons">
@@ -105,57 +122,22 @@
 
 													<div class="carousel-item active">
 														<div class="row">
+                                                            {% for f_image in f_images %}
 															<div class="col-md-3">
+                                                                 
 																<a href="#">
-																	<img src="{% static 'images/1.jpg' %} " alt="Image" style="max-width:100%;">
+																	<img src="{{ f_image.image.url }}" alt="Image" style="max-width:100%;">
 																</a>
 															</div>
-															<div class="col-md-3">
-																<a href="#">
-																	<img src="{% static 'images/2.jpg' %}" alt="Image" style="max-width:100%;">
-																</a>
-															</div>
-															<div class="col-md-3">
-																<a href="#">
-																	<img src="{% static 'images/3.jpg' %}" alt="Image" style="max-width:100%;">
-																</a>
-															</div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{% static 'images/4.jpg' %}" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
+                                                            {% endfor %} 
+															
+															
                                 </div>
                                 <!--.row-->
                             </div>
                             <!--.item-->
 
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{% static 'images/5.jpg' %}" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{% static 'images/6.jpg' %}" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{% static 'images/7.jpg' %}" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{% static 'images/8.jpg' %}" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--.row-->
-                            </div>
-                            <!--.item-->
+                           
 
                         </div>
                         <!--.carousel-inner-->
@@ -200,32 +182,7 @@
                             </div>
                             <!--.item-->
 
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--.row-->
-                            </div>
-                            <!--.item-->
+                         
 
                         </div>
                         <!--.carousel-inner-->
@@ -235,82 +192,7 @@
                 </div>
             
 			<br/><br/>
-<p>2/21</p>
-							
-							
-                
-            <div class="blog">
-                <div class="col-md">
-                    <div id="blogCarousel" class="carousel slide" data-ride="carousel">
 
-                        <ol class="carousel-indicators">
-                            <li data-target="#blogCarousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#blogCarousel" data-slide-to="1"></li>
-                        </ol>
-
-                        <!-- Carousel items -->
-                        <div class="carousel-inner">
-
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{% static 'images/4.jpg' %}" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{% static 'images/2.jpg' %}" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{% static 'images/1.jpg' %}" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="{% static 'images/5.jpg' %}" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                <!--.row-->
-                            </div>
-                            <!--.item-->
-
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#">
-                                            <img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;">
-                                        </a>
-                                    </div>
-                                </div>
-                                <!--.row-->
-                            </div>
-                            <!--.item-->
-
-                        </div>
-                        <!--.carousel-inner-->
-                    </div>
-                    <!--.Carousel-->
-
-                </div>
-            </div>
 </div>
 <script>
 	
@@ -361,6 +243,7 @@ Collections will go here.
 	</div>
 	</div>
 
+
 <!-- ======== Edit profile Modal ================ -->
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="myLargeModalLabel" aria-hidden="true">
@@ -387,7 +270,7 @@ Collections will go here.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" >Update Profile</button>
+        <button type="submit" class="btn btn-primary" >Upload Image</button>
       </div>
     </div>
     </form>
@@ -407,7 +290,7 @@ Collections will go here.
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+   
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
